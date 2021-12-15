@@ -10,6 +10,14 @@
         "lint": "eslint . --ext .js,.ts --fix",
         "format": "prettier --write ."
     },
+    "lint-staged": {
+        "src/**/*.{js,jsx}": ["npm run lint", "npm run format"]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
     "keywords": [],
     "author": "",
     "license": "ISC",
