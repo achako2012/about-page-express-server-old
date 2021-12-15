@@ -11,9 +11,10 @@ export const register = async (req: Request, res: Response) => {
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            return res
-                .status(400)
-                .json({ errors: errors.array(), message: 'Incorrect data while registration' });
+            return res.status(400).json({
+                errors: errors.array(),
+                message: 'Incorrect data while registration'
+            });
         }
 
         const { email, password } = req.body;
@@ -39,9 +40,10 @@ export const login = async (req: Request, res: Response) => {
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            return res
-                .status(400)
-                .json({ errors: errors.array(), message: 'Incorrect data while login' });
+            return res.status(400).json({
+                errors: errors.array(),
+                message: 'Incorrect data while login'
+            });
         }
 
         const { email, password } = req.body;
