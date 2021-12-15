@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import {
-  createArticle,
-  deleteArticleById,
-  getArticleById,
-  getArticles,
-  updateArticleById
+    createArticle,
+    deleteArticleById,
+    getArticleById,
+    getArticles,
+    updateArticleById
 } from '../controllers/articles-api-controller.js';
 
 const router = Router();

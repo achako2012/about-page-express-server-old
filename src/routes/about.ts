@@ -1,15 +1,15 @@
 import { Router } from 'express';
 import {
-  addAbout,
-  addExperience,
-  addSkill,
-  deleteAboutById,
-  deleteExperienceById,
-  deleteSkillById,
-  getAbout,
-  getAboutProfile,
-  getExperience,
-  getSkills
+    addAbout,
+    addExperience,
+    addSkill,
+    deleteAboutById,
+    deleteExperienceById,
+    deleteSkillById,
+    getAbout,
+    getAboutProfile,
+    getExperience,
+    getSkills
 } from '../controllers/customer-api-controller.js';
 
 const router = Router();

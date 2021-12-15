@@ -11,18 +11,19 @@ import articlesRoutes from './routes/articles.js';
 const server = express();
 const PORT = process.env.PORT || '3001';
 
-const uri = process.env.MONGODB_URI
-    || 'mongodb+srv://alex:chako2012@cluster0.t6ctu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const uri =
+    process.env.MONGODB_URI ||
+    'mongodb+srv://alex:chako2012@cluster0.t6ctu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 await mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
 const allowedOrigins = ['http://localhost:3000', 'https://aboutalexapp.herokuapp.com'];
 
 const options: cors.CorsOptions = {
-  origin: allowedOrigins
+    origin: allowedOrigins
 };
 
 server.use(cors(options));
@@ -32,7 +33,7 @@ server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 
 if (process.env.NODE_ENV === 'production') {
-  server.use(express.static('client/build'));
+    server.use(express.static('client/build'));
 }
 
 server.use(middlewares.requestTime);
