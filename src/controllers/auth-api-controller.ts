@@ -60,9 +60,9 @@ export const login = async (req: Request, res: Response) => {
 
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '1h' });
 
-    return res.json({ token, userId: user.id });
+     res.json({ token, userId: user.id });
   } catch (e) {
-    return res.status(500).json({ message: 'Something went wrong' });
+     res.status(500).json({ message: 'Something went wrong' });
   }
 };
 
