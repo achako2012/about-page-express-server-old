@@ -1,19 +1,17 @@
 {
     "root": true,
-    "env": {
-        "node": true,
-        "es2021": true
-    },
-    "plugins": ["@typescript-eslint", "prettier", "eslint-plugin-tsdoc"],
-    "extends": ["prettier", "airbnb-base", "airbnb-typescript/base"],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "project": "./tsconfig.json"
     },
-    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint", "prettier", "eslint-plugin-tsdoc"
+    ],
+    "extends": ["airbnb-base",
+        "airbnb-typescript/base",
+        "prettier"],
     "rules": {
-        "no-console": 0,
-        "@typescript-eslint/comma-dangle": ["warn", "never"],
-        "no-underscore-dangle": 0,
-        "@typescript-eslint/naming-convention": 0
+        "prettier/prettier": ["warn"],
+        "no-console": 0
     }
 }
