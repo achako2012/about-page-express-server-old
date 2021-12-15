@@ -6,12 +6,12 @@ const schema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
+    unique: true
   },
   password: {
     type: String,
-    required: true,
-  },
+    required: true
+  }
 });
 
 export default model('User', schema);

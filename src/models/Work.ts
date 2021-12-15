@@ -5,20 +5,20 @@ const { Schema, model } = pkg;
 const schema = new Schema({
   company: {
     type: String,
-    required: true,
+    required: true
   },
   position: {
     type: String,
-    required: true,
+    required: true
   },
   date: {
     type: String,
-    required: true,
+    required: true
   },
   obligations: {
     type: String,
-    required: true,
-  },
+    required: true
+  }
 });
 
 export default model('Work', schema);

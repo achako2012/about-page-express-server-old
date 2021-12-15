@@ -16,13 +16,13 @@ const uri = process.env.MONGODB_URI
 
 await mongoose.connect(uri, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 });
 
 const allowedOrigins = ['http://localhost:3000', 'https://aboutalexapp.herokuapp.com'];
 
 const options: cors.CorsOptions = {
-  origin: allowedOrigins,
+  origin: allowedOrigins
 };
 
 server.use(cors(options));

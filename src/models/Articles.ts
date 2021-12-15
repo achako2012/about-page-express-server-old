@@ -5,33 +5,33 @@ const { Schema, model } = pkg;
 const schema = new Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
   subTitle: {
     type: String,
-    required: true,
+    required: true
   },
   thumbnail: {
     type: String,
     required: true,
-    path: 'image',
+    path: 'image'
   },
   color: {
     type: String,
-    required: true,
+    required: true
   },
   date: {
     type: Date,
-    required: true,
+    required: true
   },
   entity: {
     type: JSON,
-    required: true,
+    required: true
   },
   html: {
     type: JSON,
-    required: true,
-  },
+    required: true
+  }
 });
 
 export default model('Article', schema);

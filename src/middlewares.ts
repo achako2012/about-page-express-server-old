@@ -13,7 +13,7 @@ const logger = (req: Request, res: Response, next: NextFunction) => {
 
 const middlewares = {
   requestTime,
-  logger,
+  logger
 };
 
 export default middlewares;

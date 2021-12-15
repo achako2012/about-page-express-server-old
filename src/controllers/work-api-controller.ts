@@ -13,14 +13,14 @@ export const getAll = async (req: Request, res: Response) => {
 
 export const create = async (req: Request, res: Response) => {
   const {
-    company, position, date, obligations,
+    company, position, date, obligations
   } = req.body;
 
   const work = {
     company,
     position,
     date,
-    obligations,
+    obligations
   };
 
   await Work.create(work, (err, doc) => {

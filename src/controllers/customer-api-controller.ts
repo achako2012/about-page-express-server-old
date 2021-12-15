@@ -44,7 +44,7 @@ export const getAboutProfile = async (req: Request, res: Response) => {
 
 export const addAbout = async (req: Request, res: Response) => {
   const {
-    name, intro, position, title, article,
+    name, intro, position, title, article
   } = req.body;
 
   const about = {
@@ -52,7 +52,7 @@ export const addAbout = async (req: Request, res: Response) => {
     intro,
     position,
     title,
-    article,
+    article
   };
 
   await About.create(about, (err, doc) => {
@@ -69,7 +69,7 @@ export const addExperience = async (req: Request, res: Response) => {
 
   const experience = {
     title,
-    article,
+    article
   };
 
   await Experience.create(experience, (err, doc) => {
@@ -86,7 +86,7 @@ export const addSkill = async (req: Request, res: Response) => {
 
   const skill = {
     title,
-    value,
+    value
   };
 
   await Skills.create(skill, (err, doc) => {

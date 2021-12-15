@@ -22,7 +22,7 @@ export const getArticleById = async (req: Request, res: Response) => {
       if (err) console.log(err);
 
       console.log(result);
-    },
+    }
   );
 
   res.status(200).json(article);
@@ -30,7 +30,7 @@ export const getArticleById = async (req: Request, res: Response) => {
 
 export const updateArticleById = async (req: Request, res: Response) => {
   const {
-    id, title, subTitle, thumbnail, color, entity, html,
+    id, title, subTitle, thumbnail, color, entity, html
   } = req.body;
 
   const query = { _id: id };
@@ -42,8 +42,8 @@ export const updateArticleById = async (req: Request, res: Response) => {
       thumbnail,
       color,
       entity,
-      html,
-    },
+      html
+    }
   };
 
   await Articles.updateOne(query, update);
@@ -53,7 +53,7 @@ export const updateArticleById = async (req: Request, res: Response) => {
 
 export const createArticle = async (req: Request, res: Response) => {
   const {
-    title, subTitle, thumbnail, color, entity, html,
+    title, subTitle, thumbnail, color, entity, html
   } = req.body;
   const date = Date.now();
 
@@ -64,7 +64,7 @@ export const createArticle = async (req: Request, res: Response) => {
     color,
     entity,
     date,
-    html,
+    html
   };
 
   // TODO solve this

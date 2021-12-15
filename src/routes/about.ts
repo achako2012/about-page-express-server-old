@@ -9,7 +9,7 @@ import {
   getAbout,
   getAboutProfile,
   getExperience,
-  getSkills,
+  getSkills
 } from '../controllers/customer-api-controller.js';
 
 const router = Router();

@@ -5,24 +5,24 @@ const { Schema, model } = pkg;
 const schema = new Schema({
   name: {
     type: String,
-    required: true,
+    required: true
   },
   intro: {
     type: String,
-    required: true,
+    required: true
   },
   position: {
     type: String,
-    required: true,
+    required: true
   },
   title: {
     type: String,
-    required: true,
+    required: true
   },
   article: {
     type: String,
-    required: true,
-  },
+    required: true
+  }
 });
 
 export default model('About', schema);

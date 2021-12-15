@@ -4,7 +4,7 @@ import {
   deleteArticleById,
   getArticleById,
   getArticles,
-  updateArticleById,
+  updateArticleById
 } from '../controllers/articles-api-controller.js';
 
 const router = Router();
