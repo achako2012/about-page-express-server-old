@@ -21,6 +21,7 @@ export const getArticleById = async (req: Request, res: Response) => {
         (err: any, result: any) => {
             if (err) console.log(err);
             console.log('Hi');
+            console.log('Boo');
             console.log(result);
         }
     );
