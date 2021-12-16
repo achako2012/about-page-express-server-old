@@ -12,10 +12,10 @@ export const getArticles = async (req: Request, res: Response) => {
 };
 
 export const getArticleById = async (req: Request, res: Response) => {
-    const id = req.params.uid;
+    const _id = req.params.uid;
 
     const article = await Articles.findOne(
-        { _id: id },
+        { _id },
         undefined,
         undefined,
         (err: any, result: any) => {
@@ -29,9 +29,9 @@ export const getArticleById = async (req: Request, res: Response) => {
 };
 
 export const updateArticleById = async (req: Request, res: Response) => {
-    const { id, title, subTitle, thumbnail, color, entity, html } = req.body;
+    const { _id, title, subTitle, thumbnail, color, entity, html } = req.body;
 
-    const query = { _id: id };
+    const query = { _id };
 
     const update = {
         $set: {

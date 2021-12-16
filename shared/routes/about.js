@@ -1,5 +1,16 @@
 import { Router } from 'express';
-import { addAbout, addExperience, addSkill, deleteAboutById, deleteExperienceById, deleteSkillById, getAbout, getAboutProfile, getExperience, getSkills } from '../controllers/customer-api-controller.js';
+import {
+    addAbout,
+    addExperience,
+    addSkill,
+    deleteAboutById,
+    deleteExperienceById,
+    deleteSkillById,
+    getAbout,
+    getAboutProfile,
+    getExperience,
+    getSkills
+} from '../controllers/customer-api-controller.js';
 const router = Router();
 router.get('/customer-api/about', getAbout);
 router.get('/customer-api/experience', getExperience);
