@@ -4,6 +4,7 @@ import { validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 
+// TODO create a normal secret
 const JWT_SECRET = 'Lol';
 
 export const register = async (req: Request, res: Response) => {
