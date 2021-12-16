@@ -8,6 +8,8 @@
     "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
     "rules": {
         "prettier/prettier": ["warn"],
-        "no-console": 0
+        "no-console": 0,
+        "@typescript-eslint/naming-convention": 0,
+        "no-underscore-dangle": 0
     }
 }
