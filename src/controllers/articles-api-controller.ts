@@ -19,7 +19,7 @@ export const getArticleById = async (req: Request, res: Response) => {
         undefined,
         undefined,
         (err: any, result: any) => {
-            if (err) console.log(err);
+            if (err)  console.log(err);
 
             console.log(result);
         }
