@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { deleteUser, login, register } from '../controllers/auth-api-controller.js';
 import { check } from 'express-validator';
+import { deleteUser, login, register } from '../controllers/auth-api-controller.js';
 const router = Router();
 const registrationValidator = [
     check('email', "Email isn't valid").isEmail(),
