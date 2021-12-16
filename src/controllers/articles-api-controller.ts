@@ -16,10 +16,10 @@ export const getArticleById = async (req: Request, res: Response) => {
 
     const article = await Articles.findOne(
         { _id: id },
-        undefined,
+        undefined,  
         undefined,
         (err: any, result: any) => {
-            if (err)  console.log(err);
+            if (err) console.log(err);
 
             console.log(result);
         }
