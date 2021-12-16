@@ -8,6 +8,6 @@
     "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
     "rules": {
         "prettier/prettier": ["warn"],
-        "no-console": 0
+        "no-console": 2
     }
 }
