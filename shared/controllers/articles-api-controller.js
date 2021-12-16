@@ -12,8 +12,6 @@ export const getArticleById = async (req, res) => {
     const article = await Articles.findOne({ _id: id }, undefined, undefined, (err, result) => {
         if (err)
             console.log(err);
-        console.log('Hi');
-        console.log('Boo');
         console.log(result);
     });
     res.status(200).json(article);
