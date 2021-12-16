@@ -22,8 +22,7 @@ export const register = async (req, res) => {
         const user = new User({ email, password: hashedPassword });
         await user.save();
         return res.status(201).json({ message: 'User created' });
-    }
-    catch (e) {
+    } catch (e) {
         return res.status(500).json({ message: 'Something went wrong' });
     }
 };
@@ -47,8 +46,7 @@ export const login = async (req, res) => {
         }
         const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '1h' });
         return res.json({ token, userId: user.id });
-    }
-    catch (e) {
+    } catch (e) {
         return res.status(500).json({ message: 'Something went wrong' });
     }
 };
@@ -64,13 +62,11 @@ export const deleteUser = async (req, res) => {
             return res.status(404).json({ message: "Couldn't find the user" });
         }
         await User.findOneAndDelete({ _id: id }, undefined, (err, result) => {
-            if (err)
-                console.log(err);
+            if (err) console.log(err);
             console.log(result);
         });
         return res.json({ message: `User with id: ${id} deleted` });
-    }
-    catch (e) {
+    } catch (e) {
         return res.status(500).json({ message: 'Something went wrong' });
     }
 };
