@@ -9,14 +9,13 @@ import aboutRoutes from './routes/about.js';
 import articlesRoutes from './routes/articles.js';
 const server = express();
 const PORT = process.env.PORT || '3001';
-const uri =
-    process.env.MONGODB_URI ||
+const uri = process.env.MONGODB_URI ||
     'mongodb+srv://alex:chako2012@cluster0.t6ctu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 await mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
-const allowedOrigins = ['http://localhost:3000', 'https://aboutalexapp.herokuapp.com'];
+const allowedOrigins = ['http://localhost:3000', 'https://aboutapp.herokuapp.com'];
 const options = {
     origin: allowedOrigins
 };

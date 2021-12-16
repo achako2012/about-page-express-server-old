@@ -1,7 +1,8 @@
-import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
 import { validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
+import User from '../models/User.js';
+// TODO create a normal secret
 const JWT_SECRET = 'Lol';
 export const register = async (req, res) => {
     try {
@@ -21,8 +22,9 @@ export const register = async (req, res) => {
         const user = new User({ email, password: hashedPassword });
         await user.save();
         return res.status(201).json({ message: 'User created' });
-    } catch (e) {
-        res.status(500).json({ message: 'Something went wrong' });
+    }
+    catch (e) {
+        return res.status(500).json({ message: 'Something went wrong' });
     }
 };
 export const login = async (req, res) => {
@@ -35,7 +37,7 @@ export const login = async (req, res) => {
             });
         }
         const { email, password } = req.body;
-        const user = await User.findOne({ email: email });
+        const user = await User.findOne({ email });
         if (!user) {
             return res.status(404).json({ message: "Couldn't find the user" });
         }
@@ -44,9 +46,10 @@ export const login = async (req, res) => {
             return res.status(400).json({ message: 'Password is invalid ' });
         }
         const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token, userId: user.id });
-    } catch (e) {
-        res.status(500).json({ message: 'Something went wrong' });
+        return res.json({ token, userId: user.id });
+    }
+    catch (e) {
+        return res.status(500).json({ message: 'Something went wrong' });
     }
 };
 export const deleteUser = async (req, res) => {
@@ -61,12 +64,14 @@ export const deleteUser = async (req, res) => {
             return res.status(404).json({ message: "Couldn't find the user" });
         }
         await User.findOneAndDelete({ _id: id }, undefined, (err, result) => {
-            if (err) console.log(err);
+            if (err)
+                console.log(err);
             console.log(result);
         });
-        res.json({ message: `User with id: ${id} deleted` });
-    } catch (e) {
-        res.status(500).json({ message: 'Something went wrong' });
+        return res.json({ message: `User with id: ${id} deleted` });
+    }
+    catch (e) {
+        return res.status(500).json({ message: 'Something went wrong' });
     }
 };
 //# sourceMappingURL=auth-api-controller.js.map
