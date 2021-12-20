@@ -1,5 +1,5 @@
-import Articles from '../models/Articles.js';
 import { validationResult } from 'express-validator';
+import Articles from '../models/Articles.js';
 export const getArticles = async (req, res) => {
     const articles = await Articles.find({}, (err, doc) => {
         if (err)
@@ -18,20 +18,38 @@ export const getArticleById = async (req, res) => {
     res.status(200).json(article);
 };
 export const updateArticleById = async (req, res) => {
-    const { _id, title, subTitle, thumbnail, color, entity, html } = req.body;
-    const query = { _id };
-    const update = {
-        $set: {
-            title,
-            subTitle,
-            thumbnail,
-            color,
-            entity,
-            html
+    try {
+        const errors = validationResult(req);
+        console.log('1');
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                code: 400,
+                errors: errors.array(),
+                message: 'Incorrect data while updating article'
+            });
         }
-    };
-    await Articles.updateOne(query, update);
-    res.status(200).json({ message: 'updated' });
+        console.log('2');
+        const { _id, title, subTitle, thumbnail, color, entity, html } = req.body;
+        const query = { _id };
+        const updateArticle = await Articles.updateOne(query, {
+            $set: {
+                title,
+                subTitle,
+                thumbnail,
+                color,
+                entity,
+                html
+            }
+        });
+        console.log('3');
+        // await updateArticle.save();
+        return res
+            .status(200)
+            .json({ code: 201, message: 'Article updated', article: updateArticle });
+    }
+    catch (e) {
+        return res.status(500).json({ code: 500, message: e });
+    }
 };
 export const createArticle = async (req, res) => {
     try {

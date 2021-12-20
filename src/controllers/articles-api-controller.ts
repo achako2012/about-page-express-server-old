@@ -30,24 +30,38 @@ export const getArticleById = async (req: Request, res: Response) => {
 };
 
 export const updateArticleById = async (req: Request, res: Response) => {
-    const { _id, title, subTitle, thumbnail, color, entity, html } = req.body;
+    try {
+        const errors = validationResult(req);
 
-    const query = { _id };
-
-    const update = {
-        $set: {
-            title,
-            subTitle,
-            thumbnail,
-            color,
-            entity,
-            html
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                code: 400,
+                errors: errors.array(),
+                message: 'Incorrect data while updating article'
+            });
         }
-    };
 
-    await Articles.updateOne(query, update);
+        const { _id, title, subTitle, thumbnail, color, entity, html } = req.body;
 
-    res.status(200).json({ message: 'updated' });
+        const query = { _id };
+
+        const updateArticle = await Articles.updateOne(query, {
+            $set: {
+                title,
+                subTitle,
+                thumbnail,
+                color,
+                entity,
+                html
+            }
+        });
+
+        return res
+            .status(200)
+            .json({ code: 201, message: 'Article updated', article: updateArticle });
+    } catch (e) {
+        return res.status(500).json({ code: 500, message: e });
+    }
 };
 
 export const createArticle = async (req: Request, res: Response) => {
