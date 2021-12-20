@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { validationResult } from 'express-validator';
 import Articles from '../models/Articles.js';
 
 export const getArticles = async (req: Request, res: Response) => {
@@ -50,30 +51,35 @@ export const updateArticleById = async (req: Request, res: Response) => {
 };
 
 export const createArticle = async (req: Request, res: Response) => {
-    const { title, subTitle, thumbnail, color, entity, html } = req.body;
-    const date = Date.now();
+    try {
+        const errors = validationResult(req);
 
-    const newArticle = {
-        title,
-        subTitle,
-        thumbnail,
-        color,
-        entity,
-        date,
-        html
-    };
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                code: 400,
+                errors: errors.array(),
+                message: 'Incorrect data while creating article'
+            });
+        }
 
-    // TODO solve this
-    const foo = await Articles.create(newArticle);
-    // Articles.create(newArticle, (err, doc) => {
-    //
-    //     if (err)
-    //         console.log(err);
-    //
-    //     console.log("Object ARTICLE is saved", doc);
-    // })
+        const { title, subTitle, thumbnail, color, entity, html } = req.body;
+        const date = Date.now();
 
-    res.status(201).json(foo);
+        const newArticle = await Articles.create({
+            title,
+            subTitle,
+            thumbnail,
+            color,
+            entity,
+            date,
+            html
+        });
+
+        await newArticle.save();
+        return res.status(201).json({ code: 201, message: 'Article created', article: newArticle });
+    } catch (e) {
+        return res.status(500).json({ code: 500, message: 'Something went wrong' });
+    }
 };
 
 export const deleteArticleById = async (req: Request, res: Response) => {
