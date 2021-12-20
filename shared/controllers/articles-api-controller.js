@@ -18,7 +18,6 @@ export const getArticleById = async (req, res) => {
 export const updateArticleById = async (req, res) => {
     try {
         const errors = validationResult(req);
-        console.log('1');
         if (!errors.isEmpty()) {
             return res.status(400).json({
                 code: 400,
@@ -26,7 +25,6 @@ export const updateArticleById = async (req, res) => {
                 message: 'Incorrect data while updating article'
             });
         }
-        console.log('2');
         const { _id, title, subTitle, thumbnail, color, entity, html } = req.body;
         const query = { _id };
         const updateArticle = await Articles.updateOne(query, {
@@ -39,8 +37,6 @@ export const updateArticleById = async (req, res) => {
                 html
             }
         });
-        console.log('3');
-        // await updateArticle.save();
         return res
             .status(200)
             .json({ code: 201, message: 'Article updated', article: updateArticle });
