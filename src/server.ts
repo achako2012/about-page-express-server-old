@@ -20,7 +20,7 @@ await mongoose.connect(uri, {
     useUnifiedTopology: true
 });
 
-const allowedOrigins = ['http://localhost:3000', 'https://aboutapp.herokuapp.com'];
+const allowedOrigins = ['http://localhost:3000', 'https://about-alexchako.vercel.app'];
 
 const options: cors.CorsOptions = {
     origin: allowedOrigins
