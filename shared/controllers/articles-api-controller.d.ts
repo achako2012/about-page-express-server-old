@@ -1,12 +1,6 @@
 import { Request, Response } from 'express';
 export declare const getArticles: (req: Request, res: Response) => Promise<void>;
 export declare const getArticleById: (req: Request, res: Response) => Promise<void>;
-export declare const updateArticleById: (
-    req: Request,
-    res: Response
-) => Promise<Response<any, Record<string, any>>>;
-export declare const createArticle: (
-    req: Request,
-    res: Response
-) => Promise<Response<any, Record<string, any>>>;
+export declare const updateArticleById: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
+export declare const createArticle: (req: Request, res: Response) => Promise<Response<any, Record<string, any>>>;
 export declare const deleteArticleById: (req: Request, res: Response) => Promise<void>;
