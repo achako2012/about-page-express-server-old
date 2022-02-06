@@ -23,6 +23,7 @@ server.use(cors(options));
 // Data parsing
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
+server.use(express.json({ limit: '50mb' }));
 if (process.env.NODE_ENV === 'production') {
     server.use(express.static('client/build'));
 }
