@@ -32,7 +32,7 @@ server.use(cors(options));
 server.use(express.urlencoded({
         limit: '1000mb',
         parameterLimit: 100000,
-        extended: true
+        extended: false
 }));
 server.use(express.json({ limit: '1000mb' }));
 
