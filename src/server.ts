@@ -29,12 +29,12 @@ const options: cors.CorsOptions = {
 server.use(cors(options));
 
 // Data parsing
-server.use(bodyParser.urlencoded({
+server.use(express.urlencoded({
         limit: '1000mb',
         parameterLimit: 100000,
         extended: true
 }));
-server.use(bodyParser.json({ limit: '1000mb' }));
+server.use(express.json({ limit: '1000mb' }));
 
 if (process.env.NODE_ENV === 'production') {
     server.use(express.static('client/build'));
