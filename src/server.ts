@@ -32,7 +32,7 @@ server.use(cors(options));
 server.use(bodyParser.urlencoded({
         limit: '1000mb',
         parameterLimit: 100000,
-        extended: false
+        extended: true
 }));
 server.use(bodyParser.json({ limit: '1000mb' }));
 
