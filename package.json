@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "",
     "type": "module",
+    "engines": { 
+        "node": "14.17.5" 
+     },
     "scripts": {
         "heroku-postbuild": "npm install",
         "start": "node shared/server.js",
