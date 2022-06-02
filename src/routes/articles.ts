@@ -11,7 +11,7 @@ const router = Router();
 
 router.get('/articles-api/articles-list', getArticles);
 
-router.post('/articles-api/articles-list', createArticle);
+router.post('/articles-api/articles-listss', createArticle);
 
 router.put('/articles-api/articles-list', updateArticleById);
 
