@@ -30,11 +30,11 @@ server.use(cors(options));
 
 // Data parsing
 server.use(bodyParser.urlencoded({
-        limit: '100mb',
+        limit: '1000mb',
         parameterLimit: 100000,
         extended: false
 }));
-server.use(bodyParser.json({ limit: '100mb' }));
+server.use(bodyParser.json({ limit: '1000mb' }));
 
 if (process.env.NODE_ENV === 'production') {
     server.use(express.static('client/build'));
