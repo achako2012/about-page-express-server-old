@@ -1,3 +1,4 @@
+import bodyParser from 'body-parser';
 import { Router } from 'express';
 import {
     createArticle,
@@ -11,9 +12,9 @@ const router = Router();
 
 router.get('/articles-api/articles-list', getArticles);
 
-router.post('/articles-api/articles-list', createArticle);
+router.post('/articles-api/articles-list', bodyParser({limit: '50mb'}),createArticle);
 
-router.put('/articles-api/articles-list', updateArticleById);
+router.put('/articles-api/articles-list', bodyParser({limit: '50mb'}), updateArticleById);
 
 router.delete('/articles-api/articles-list', deleteArticleById);
 
